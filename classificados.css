@@ -1,0 +1,99 @@
+/* Página de evento com os classificados (classificados.html). Usa o
+ * styles.css do painel e só ajusta: coluna de vaga e lista sem rolagem,
+ * com as linhas dividindo a altura da tela (para projetor/TV). */
+
+/* Colunas de nota mais estreitas que no painel, para o nome caber inteiro. */
+.linha {
+  grid-template-columns:
+    clamp(56px, 5.5vw, 120px) minmax(0, 1fr) clamp(36px, 3.5vw, 80px)
+    repeat(2, clamp(70px, 6.5vw, 130px)) clamp(100px, 9.5vw, 190px) clamp(150px, 13.5vw, 270px);
+  gap: clamp(8px, 1vw, 20px);
+}
+
+/* line-height maior: com overflow hidden, 1.15 corta o acento de maiúsculas (Á). */
+.col-nome { line-height: 1.4; }
+
+h2 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 24px;
+}
+.contagem {
+  font-size: 0.5em;
+  letter-spacing: 0.08em;
+  opacity: 0.85;
+}
+
+.col-vaga { display: flex; justify-content: flex-start; min-width: 0; }
+.linha--cabecalho .col-vaga { display: block; }
+
+.vaga {
+  display: inline-block;
+  padding: 0.25em 0.6em;
+  border: 2px solid var(--tinta);
+  background: #fff;
+  color: var(--azul);
+  font-size: 0.56em;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  white-space: nowrap;
+  box-shadow: 2px 2px 0 var(--tinta);
+}
+.vaga--goiana { background: var(--verde); color: var(--tinta); }
+
+/* ── Telas maiores: tudo cabe na tela, sem rolagem ─────────────────────── */
+@media (min-width: 761px) {
+  .evento .painel { padding-top: clamp(16px, 2.2vh, 36px); padding-bottom: clamp(16px, 2.2vh, 36px); }
+  .evento .badge { width: clamp(140px, min(12vw, 20vh), 280px); }
+  .evento h1 { font-size: clamp(28px, min(3.6vw, 6.5vh), 90px); }
+  /* Cabeçalho numa linha só: abas e AUTO lado a lado; o nome completo da
+     categoria já aparece no título da lista. */
+  .evento .controles { flex-direction: row; align-items: center; }
+  .evento .so-desktop { display: none; }
+  .evento .progresso { margin: clamp(10px, 1.6vh, 20px) 0 clamp(8px, 1.2vh, 16px); }
+  .evento h2 { margin-bottom: clamp(4px, 0.8vh, 12px); font-size: clamp(18px, min(2vw, 3.6vh), 44px); }
+  .evento .linha--cabecalho { padding-bottom: clamp(4px, 0.6vh, 8px); }
+
+  .evento .lista {
+    display: grid;
+    grid-template-rows: repeat(var(--n, 15), minmax(0, 1fr));
+    gap: clamp(4px, 0.8vh, 12px);
+    overflow: hidden;
+    padding: 2px 8px 8px 0;
+  }
+  .evento .linha--cabecalho { padding-right: calc(clamp(12px, 1.2vw, 24px) + 8px); }
+
+  .evento .lista .linha,
+  .evento .lista .linha.ouro {
+    min-height: 0;
+    padding-top: clamp(2px, 0.4vh, 6px);
+    padding-bottom: clamp(2px, 0.4vh, 6px);
+    font-size: clamp(13px, min(1.5vw, 2.3vh), 40px);
+    box-shadow: 4px 4px 0 var(--tinta);
+  }
+  .evento .col-nome { -webkit-line-clamp: 1; }
+  .evento .moeda {
+    width: 1.6em;
+    height: 1.6em;
+    font-size: 0.75em;
+    border-width: 2px;
+    box-shadow: 2px 2px 0 var(--tinta), inset -3px -3px 0 rgba(0, 0, 0, 0.18), inset 3px 3px 0 rgba(255, 255, 255, 0.45);
+  }
+}
+
+/* ── Mobile: vaga na linha do nome ─────────────────────────────────────── */
+@media (max-width: 760px) {
+  .lista .linha,
+  .lista .linha.ouro {
+    grid-template-areas:
+      "pos nome  nome"
+      "pos vaga  vaga"
+      "pos metr total";
+  }
+  .lista .col-vaga { grid-area: vaga; }
+  h1 { font-size: clamp(22px, 6.6vw, 44px); }
+  .vaga { font-size: 10px; }
+  .contagem { font-size: 12px; }
+}

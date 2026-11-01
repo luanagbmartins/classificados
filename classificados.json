@@ -1,0 +1,347 @@
+{
+  "carrossel_segundos": 20,
+  "rankings": [
+    {
+      "id": "publica",
+      "titulo": "Escolas públicas",
+      "equipes": [
+        {
+          "id": 869,
+          "nome": "Code Cerrado",
+          "inscricao": 864,
+          "uf": "GO",
+          "posicao": 1,
+          "tabular": 0.7785,
+          "visao": 0.8456,
+          "total": 0.81205,
+          "vaga": "Vaga Goiana"
+        },
+        {
+          "id": 460,
+          "nome": "Áurea Tech",
+          "inscricao": 458,
+          "uf": "SC",
+          "posicao": 2,
+          "tabular": 0.775,
+          "visao": 0.8343,
+          "total": 0.80465,
+          "vaga": "Ampla Concorrência"
+        },
+        {
+          "id": 9,
+          "nome": "Bugou mas foi",
+          "inscricao": 9,
+          "uf": "GO",
+          "posicao": 3,
+          "tabular": 0.7705,
+          "visao": 0.8364,
+          "total": 0.80345,
+          "vaga": "Vaga Goiana"
+        },
+        {
+          "id": 172,
+          "nome": "InsightIA",
+          "inscricao": 172,
+          "uf": "GO",
+          "posicao": 4,
+          "tabular": 0.7795,
+          "visao": 0.8187,
+          "total": 0.7991,
+          "vaga": "Vaga Goiana"
+        },
+        {
+          "id": 630,
+          "nome": "Equipe Guará",
+          "inscricao": 627,
+          "uf": "GO",
+          "posicao": 5,
+          "tabular": 0.7752,
+          "visao": 0.8217,
+          "total": 0.79845,
+          "vaga": "Vaga Goiana"
+        },
+        {
+          "id": 270,
+          "nome": "Magic Bit",
+          "inscricao": 269,
+          "uf": "GO",
+          "posicao": 6,
+          "tabular": 0.7761,
+          "visao": 0.8094,
+          "total": 0.79275,
+          "vaga": "Vaga Goiana"
+        },
+        {
+          "id": 603,
+          "nome": "PROMPT PIRATES",
+          "inscricao": 600,
+          "uf": "GO",
+          "posicao": 7,
+          "tabular": 0.7728,
+          "visao": 0.8126,
+          "total": 0.7927,
+          "vaga": "Ampla Concorrência"
+        },
+        {
+          "id": 38,
+          "nome": "Python Warriors",
+          "inscricao": 38,
+          "uf": "GO",
+          "posicao": 8,
+          "tabular": 0.7735,
+          "visao": 0.8026,
+          "total": 0.78805,
+          "vaga": "Ampla Concorrência"
+        },
+        {
+          "id": 607,
+          "nome": "ShadowCoders",
+          "inscricao": 604,
+          "uf": "GO",
+          "posicao": 9,
+          "tabular": 0.7675,
+          "visao": 0.804,
+          "total": 0.78575,
+          "vaga": "Ampla Concorrência"
+        },
+        {
+          "id": 322,
+          "nome": "HemisLogos",
+          "inscricao": 321,
+          "uf": "GO",
+          "posicao": 10,
+          "tabular": 0.7657,
+          "visao": 0.7977,
+          "total": 0.7817,
+          "vaga": "Ampla Concorrência"
+        },
+        {
+          "id": 496,
+          "nome": "Rematch",
+          "inscricao": 494,
+          "uf": "GO",
+          "posicao": 11,
+          "tabular": 0.774,
+          "visao": 0.7881,
+          "total": 0.78105,
+          "vaga": "Ampla Concorrência"
+        },
+        {
+          "id": 93,
+          "nome": "Ondaia",
+          "inscricao": 93,
+          "uf": "GO",
+          "posicao": 12,
+          "tabular": 0.7726,
+          "visao": 0.7836,
+          "total": 0.7781,
+          "vaga": "Ampla Concorrência"
+        },
+        {
+          "id": 175,
+          "nome": "Bala Neural",
+          "inscricao": 175,
+          "uf": "GO",
+          "posicao": 13,
+          "tabular": 0.7676,
+          "visao": 0.7881,
+          "total": 0.77785,
+          "vaga": "Ampla Concorrência"
+        },
+        {
+          "id": 611,
+          "nome": "Fluxo",
+          "inscricao": 608,
+          "uf": "GO",
+          "posicao": 14,
+          "tabular": 0.7675,
+          "visao": 0.7881,
+          "total": 0.7778,
+          "vaga": "Ampla Concorrência"
+        },
+        {
+          "id": 561,
+          "nome": "Time 7",
+          "inscricao": 559,
+          "uf": "GO",
+          "posicao": 15,
+          "tabular": 0.7708,
+          "visao": 0.7847,
+          "total": 0.77775,
+          "vaga": "Ampla Concorrência"
+        }
+      ]
+    },
+    {
+      "id": "privada",
+      "titulo": "Escolas privadas",
+      "equipes": [
+        {
+          "id": 855,
+          "nome": "Esqueci do forms IAgora?",
+          "inscricao": 850,
+          "uf": "CE",
+          "posicao": 1,
+          "tabular": 0.7781,
+          "visao": 0.8868,
+          "total": 0.83245,
+          "vaga": "Ampla Concorrência"
+        },
+        {
+          "id": 839,
+          "nome": "Algoritmas",
+          "inscricao": 834,
+          "uf": "SP",
+          "posicao": 2,
+          "tabular": 0.7744,
+          "visao": 0.8687,
+          "total": 0.82155,
+          "vaga": "Ampla Concorrência"
+        },
+        {
+          "id": 828,
+          "nome": "Germinare",
+          "inscricao": 823,
+          "uf": "SP",
+          "posicao": 3,
+          "tabular": 0.78,
+          "visao": 0.8483,
+          "total": 0.81415,
+          "vaga": "Ampla Concorrência"
+        },
+        {
+          "id": 198,
+          "nome": "Better Than You",
+          "inscricao": 198,
+          "uf": "GO",
+          "posicao": 4,
+          "tabular": 0.7758,
+          "visao": 0.8449,
+          "total": 0.81035,
+          "vaga": "Vaga Goiana"
+        },
+        {
+          "id": 5,
+          "nome": "Nexus",
+          "inscricao": 5,
+          "uf": "GO",
+          "posicao": 5,
+          "tabular": 0.7792,
+          "visao": 0.8351,
+          "total": 0.80715,
+          "vaga": "Vaga Goiana"
+        },
+        {
+          "id": 398,
+          "nome": "Logaritimanos",
+          "inscricao": 397,
+          "uf": "GO",
+          "posicao": 6,
+          "tabular": 0.7712,
+          "visao": 0.8253,
+          "total": 0.79825,
+          "vaga": "Vaga Goiana"
+        },
+        {
+          "id": 504,
+          "nome": "while True: WIN",
+          "inscricao": 502,
+          "uf": "GO",
+          "posicao": 7,
+          "tabular": 0.7757,
+          "visao": 0.8161,
+          "total": 0.7959,
+          "vaga": "Vaga Goiana"
+        },
+        {
+          "id": 240,
+          "nome": "KERNEL PANIC",
+          "inscricao": 239,
+          "uf": "GO",
+          "posicao": 8,
+          "tabular": 0.7725,
+          "visao": 0.8079,
+          "total": 0.7902,
+          "vaga": "Vaga Goiana"
+        },
+        {
+          "id": 696,
+          "nome": "Verumax",
+          "inscricao": 691,
+          "uf": "GO",
+          "posicao": 9,
+          "tabular": 0.7782,
+          "visao": 0.7944,
+          "total": 0.7863,
+          "vaga": "Ampla Concorrência"
+        },
+        {
+          "id": 876,
+          "nome": "Bumba Meu Bot",
+          "inscricao": 871,
+          "uf": "CE",
+          "posicao": 10,
+          "tabular": 0.7745,
+          "visao": 0.7965,
+          "total": 0.7855,
+          "vaga": "Ampla Concorrência"
+        },
+        {
+          "id": 241,
+          "nome": "NEURAL FORCE",
+          "inscricao": 240,
+          "uf": "GO",
+          "posicao": 11,
+          "tabular": 0.7706,
+          "visao": 0.7993,
+          "total": 0.78495,
+          "vaga": "Ampla Concorrência"
+        },
+        {
+          "id": 1,
+          "nome": "Move 37",
+          "inscricao": 1,
+          "uf": "GO",
+          "posicao": 12,
+          "tabular": 0.7675,
+          "visao": 0.7837,
+          "total": 0.7756,
+          "vaga": "Ampla Concorrência"
+        },
+        {
+          "id": 179,
+          "nome": "Delta Fox",
+          "inscricao": 179,
+          "uf": "GO",
+          "posicao": 13,
+          "tabular": 0.7652,
+          "visao": 0.7842,
+          "total": 0.7747,
+          "vaga": "Ampla Concorrência"
+        },
+        {
+          "id": 503,
+          "nome": "LÓGOS DELOS",
+          "inscricao": 501,
+          "uf": "GO",
+          "posicao": 14,
+          "tabular": 0.7688,
+          "visao": 0.7797,
+          "total": 0.77425,
+          "vaga": "Ampla Concorrência"
+        },
+        {
+          "id": 22,
+          "nome": "Equipe Top",
+          "inscricao": 22,
+          "uf": "GO",
+          "posicao": 15,
+          "tabular": 0.773,
+          "visao": 0.7748,
+          "total": 0.7739,
+          "vaga": "Ampla Concorrência"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="img/CEIAIcon.svg" />
+    <title>Classificados · OIAA 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=9" />
+    <link rel="stylesheet" href="classificados.css?v=1" />
+  </head>
+  <body class="evento">
+    <div class="bg-grid" aria-hidden="true"></div>
+
+    <main class="painel">
+      <header class="cabecalho">
+        <div class="badge">
+          <img class="badge-bg" src="img/BannerRoxo.svg" alt="" aria-hidden="true" />
+          <img class="badge-logo" src="img/logos/Olimpiada.svg" alt="Olimpíada de Inteligência Artificial Aplicada" />
+        </div>
+        <div class="titulo">
+          <span class="tag">OIAA 2026 · FASE 2</span>
+          <h1>CLASSIFICADOS</h1>
+        </div>
+        <div class="controles" id="controles">
+          <nav class="abas" id="abas" aria-label="Categorias"></nav>
+          <button type="button" class="toggle" id="toggle-auto" aria-pressed="true"
+                  title="Girar automaticamente entre as categorias (tecla espaço)">
+            <span class="toggle-trilho" aria-hidden="true"><span class="toggle-bola"></span></span>
+            AUTO <span class="toggle-estado">ON</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="progresso" aria-hidden="true"><span id="barra"></span></div>
+
+      <section class="slide" id="slide" hidden>
+        <h2 id="slide-titulo"></h2>
+        <div class="linha linha--cabecalho" aria-hidden="true">
+          <span class="col-pos">#</span>
+          <span class="col-nome">EQUIPE</span>
+          <span class="col-uf">UF</span>
+          <span class="col-num">TABULAR</span>
+          <span class="col-num">VISÃO</span>
+          <span class="col-num col-total">F1 MÉDIA</span>
+          <span class="col-vaga">VAGA</span>
+        </div>
+        <ol class="lista" id="lista"></ol>
+      </section>
+
+      <section class="pausa" id="pausa" hidden>
+        <img class="capivara" src="img/CapivaraHero.svg" alt="" aria-hidden="true" />
+        <div>
+          <span class="tag tag--rosa">AGUARDE</span>
+          <p class="pausa-msg">Em breve: classificados</p>
+        </div>
+      </section>
+    </main>
+
+    <script src="classificados.js?v=1"></script>
+  </body>
+</html>

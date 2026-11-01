@@ -1,0 +1,444 @@
+/* Tema da Olimpíada (mesmo da LP da semifinal). Página com rolagem,
+ * funciona em TV/painel e no celular. */
+
+@font-face {
+  font-family: 'Better VCR';
+  src: url('fonts/Better_VCR_9_0_1.ttf') format('truetype');
+  font-display: swap;
+}
+
+:root {
+  --azul: #183FFF;
+  --azul-escuro: #0B27AE;
+  --azul-grid: #4968FF;
+  --verde: #0cd4aa;
+  --roxo: #38006D;
+  --rosa: #FF0478;
+  --tinta: #1a1a1a;
+  --fundo: #EEEEEE;
+  --pixel: 'Better VCR', 'Courier New', monospace;
+  --body: 'Figtree', sans-serif;
+
+  /* Pódio: fundo da linha / caixa da posição */
+  --ouro: #FFD54A;
+  --ouro-forte: #B8860B;
+  --prata: #E4E8EF;
+  --prata-forte: #7D8798;
+  --bronze: #F2B98A;
+  --bronze-forte: #A0522D;
+
+  --gutter: clamp(16px, 3vw, 56px);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--fundo);
+  color: var(--tinta);
+  font-family: var(--pixel);
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.055) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ── Painel azul ──────────────────────────────────────────────────────── */
+.painel {
+  position: relative;
+  width: min(1720px, calc(100% - 2 * var(--gutter)));
+  min-height: calc(100dvh - 2 * clamp(12px, 2vh, 28px));
+  margin: clamp(12px, 2vh, 28px) auto;
+  padding: clamp(20px, 3vh, 40px) clamp(16px, 3vw, 56px);
+  display: flex;
+  flex-direction: column;
+  background-color: var(--azul);
+  background-image:
+    linear-gradient(var(--azul-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--azul-grid) 1px, transparent 1px);
+  background-size: 32px 32px;
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 10px 32px rgba(0, 0, 0, 0.15);
+  color: #fff;
+}
+
+/* ── Cabeçalho ────────────────────────────────────────────────────────── */
+.cabecalho {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px clamp(16px, 2.5vw, 48px);
+}
+
+.badge {
+  position: relative;
+  flex: none;
+  width: clamp(170px, 16vw, 300px);
+  filter: drop-shadow(5px 8px 0 rgba(0, 0, 0, 0.35));
+}
+.badge-bg { display: block; width: 100%; height: auto; }
+.badge-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 106%;
+  transform: translate(-50%, -50%);
+}
+
+.titulo { flex: 0 0 auto; }
+
+.tag {
+  display: inline-block;
+  padding: 6px 12px;
+  background: var(--verde);
+  color: var(--tinta);
+  font-size: clamp(12px, 1.1vw, 20px);
+  letter-spacing: 0.08em;
+  box-shadow: 4px 4px 0 var(--tinta);
+}
+.tag--rosa { background: var(--rosa); color: #fff; }
+
+h1 {
+  margin: 10px 0 0;
+  font-size: clamp(36px, 4.4vw, 84px);
+  font-weight: normal;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.35);
+}
+
+/* Abas do carrossel: indicam o ranking na tela e podem ser clicadas. */
+.abas { display: flex; flex-wrap: wrap; gap: 10px; }
+.aba {
+  padding: 10px 16px;
+  border: 2px solid #fff;
+  background: transparent;
+  color: #fff;
+  font: inherit;
+  font-size: clamp(12px, 1.05vw, 20px);
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 200ms ease, background 200ms ease;
+}
+.aba:hover { opacity: 1; }
+.aba:focus-visible { outline: 3px solid var(--verde); outline-offset: 3px; }
+.aba.ativa {
+  opacity: 1;
+  background: #fff;
+  color: var(--azul);
+  box-shadow: 4px 4px 0 var(--tinta);
+}
+
+.controles {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  margin-left: auto;
+}
+
+/* Botão AUTO: liga/desliga o giro automático do carrossel. */
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border: 2px solid #fff;
+  background: var(--tinta);
+  color: #fff;
+  font: inherit;
+  font-size: clamp(12px, 1.05vw, 20px);
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.35);
+}
+.toggle:focus-visible { outline: 3px solid var(--verde); outline-offset: 3px; }
+.toggle-trilho {
+  position: relative;
+  width: 2.4em;
+  height: 1.2em;
+  background: #555;
+  border: 2px solid #fff;
+  transition: background 150ms ease;
+}
+.toggle-bola {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: calc(1.2em - 6px);
+  height: calc(1.2em - 6px);
+  background: #fff;
+  transition: transform 150ms ease;
+}
+.toggle-estado { min-width: 3ch; color: #aaa; }
+.toggle[aria-pressed="true"] .toggle-trilho { background: var(--verde); }
+.toggle[aria-pressed="true"] .toggle-bola { transform: translateX(1.2em); }
+.toggle[aria-pressed="true"] .toggle-estado { color: var(--verde); }
+
+.progresso {
+  height: 6px;
+  margin: 20px 0 16px;
+  background: rgba(255, 255, 255, 0.2);
+}
+.progresso span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--verde);
+}
+.progresso span.rodando { animation: progresso linear forwards; }
+.progresso.parado span { animation-play-state: paused; }
+.progresso.desligado span { visibility: hidden; }
+@keyframes progresso { from { width: 0; } to { width: 100%; } }
+
+/* ── Ranking ──────────────────────────────────────────────────────────── */
+.slide { flex: 1; }
+.slide.entrando { animation: entrar 500ms ease-out; }
+@keyframes entrar {
+  from { opacity: 0; transform: translate3d(30px, 0, 0); }
+  to   { opacity: 1; transform: none; }
+}
+
+h2 {
+  margin: 0 0 12px;
+  font-weight: normal;
+  font-size: clamp(20px, 2.2vw, 44px);
+  letter-spacing: 0.06em;
+}
+
+.linha {
+  display: grid;
+  grid-template-columns: clamp(64px, 6vw, 120px) minmax(0, 1fr) clamp(40px, 4.5vw, 90px) repeat(2, clamp(90px, 10vw, 180px)) clamp(100px, 11vw, 200px);
+  align-items: center;
+  gap: clamp(10px, 1.5vw, 28px);
+}
+
+.linha--cabecalho {
+  padding: 0 clamp(12px, 1.2vw, 24px) 8px;
+  font-size: clamp(11px, 0.95vw, 18px);
+  letter-spacing: 0.08em;
+  opacity: 0.8;
+}
+
+.lista {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 1vh, 14px);
+}
+
+.lista .linha {
+  min-height: clamp(56px, 7vh, 84px);
+  padding: 8px clamp(12px, 1.2vw, 24px);
+  background: #fff;
+  color: var(--tinta);
+  border: 2px solid var(--tinta);
+  box-shadow: 5px 5px 0 var(--tinta);
+  font-size: clamp(16px, 1.6vw, 34px);
+  animation: entrar 400ms ease-out both;
+  animation-delay: calc(min(var(--i), 15) * 40ms);
+}
+
+.col-pos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  align-self: stretch;
+  background: var(--azul-escuro);
+  color: #fff;
+}
+.linha--cabecalho .col-pos { background: none; }
+
+.col-nome {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+.inscricao {
+  font-family: var(--body);
+  font-weight: 700;
+  font-size: 0.6em;
+  color: #666;
+  vertical-align: middle;
+}
+
+.col-num {
+  text-align: right;
+  font-family: var(--body);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.8em;
+  color: #444;
+}
+.col-uf {
+  text-align: center;
+  font-family: var(--body);
+  font-weight: 700;
+  font-size: 0.8em;
+  color: #444;
+}
+.col-trilhas { display: none; }
+.linha--cabecalho .col-num,
+.linha--cabecalho .col-uf { font-family: var(--pixel); font-weight: normal; font-size: inherit; color: inherit; }
+
+.lista .col-total {
+  font-family: var(--pixel);
+  font-weight: normal;
+  font-size: 1em;
+  color: var(--azul);
+}
+
+/* Pódio: ouro, prata e bronze */
+.lista .linha.ouro   { background: var(--ouro); }
+.lista .linha.prata  { background: var(--prata); }
+.lista .linha.bronze { background: var(--bronze); }
+/* Moeda: círculo metálico com a posição. */
+.lista .linha.ouro .col-pos,
+.lista .linha.prata .col-pos,
+.lista .linha.bronze .col-pos { background: none; }
+.moeda {
+  display: grid;
+  place-items: center;
+  width: 2.1em;
+  height: 2.1em;
+  border-radius: 50%;
+  border: 3px solid var(--tinta);
+  color: var(--tinta);
+  font-size: 0.85em;
+  box-shadow: 3px 3px 0 var(--tinta), inset -4px -4px 0 rgba(0, 0, 0, 0.18), inset 4px 4px 0 rgba(255, 255, 255, 0.45);
+}
+.ouro   .moeda { background: #F5B800; }
+.prata  .moeda { background: #C3CAD6; }
+.bronze .moeda { background: #CD7F32; }
+.lista .linha.ouro .col-num,
+.lista .linha.prata .col-num,
+.lista .linha.bronze .col-num { color: #2b2b2b; }
+.lista .linha.ouro .col-total,
+.lista .linha.prata .col-total,
+.lista .linha.bronze .col-total { color: var(--tinta); }
+.lista .linha.ouro { min-height: clamp(64px, 8.5vh, 100px); }
+
+.vazio {
+  margin: 48px 0;
+  text-align: center;
+  font-size: clamp(18px, 2vw, 40px);
+}
+
+/* ── Fora do ar ───────────────────────────────────────────────────────── */
+.pausa {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 32px 4vw;
+  padding: 32px 0;
+}
+.pausa .capivara { width: clamp(160px, 22vw, 420px); height: auto; }
+.pausa .tag { font-size: clamp(16px, 1.6vw, 30px); }
+.pausa-msg {
+  max-width: 14ch;
+  margin: 24px 0 0;
+  font-size: clamp(36px, 5.5vw, 110px);
+  line-height: 1.05;
+  text-shadow: 5px 5px 0 rgba(0, 0, 0, 0.35);
+}
+
+/* ── Rodapé ───────────────────────────────────────────────────────────── */
+.rodape {
+  margin-top: 24px;
+  font-family: var(--body);
+  font-size: clamp(12px, 0.95vw, 18px);
+  opacity: 0.85;
+}
+.rodape .alerta { color: #ffd0e3; }
+
+/* ── Telas maiores: painel do tamanho da tela, rolagem só na lista ──── */
+@media (min-width: 761px) {
+  body { overflow: hidden; }
+  .painel { height: calc(100dvh - 2 * clamp(12px, 2vh, 28px)); }
+  .slide { display: flex; flex-direction: column; min-height: 0; }
+
+  .lista {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    /* espaço para a sombra das caixas e para a barra não colar nelas */
+    padding: 2px 16px 10px 0;
+    scrollbar-gutter: stable;
+    scrollbar-width: thin;
+    scrollbar-color: #fff rgba(255, 255, 255, 0.2);
+  }
+  .linha--cabecalho { padding-right: calc(clamp(12px, 1.2vw, 24px) + 16px + 12px); }
+
+  .lista::-webkit-scrollbar { width: 12px; }
+  .lista::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.2); }
+  .lista::-webkit-scrollbar-thumb { background: #fff; border: 2px solid var(--tinta); }
+}
+
+/* ── Mobile: cada equipe vira um card ─────────────────────────────────── */
+@media (max-width: 760px) {
+  .cabecalho { gap: 16px; }
+  .badge { width: 170px; }
+  .titulo { flex-basis: 100%; }
+  .titulo { flex-basis: 100%; }
+  .controles { width: 100%; align-items: stretch; margin-left: 0; }
+  .abas { width: 100%; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 6px; }
+  .toggle { align-self: flex-end; }
+  .aba { flex: 1 1 0; padding: 10px 8px; text-align: center; }
+
+  .linha--cabecalho { display: none; }
+
+  .so-desktop { display: none; }
+
+  .lista .linha,
+  .lista .linha.ouro {
+    grid-template-columns: 48px minmax(0, 1fr) auto;
+    grid-template-areas:
+      "pos nome  nome"
+      "pos metr total";
+    gap: 4px 12px;
+    min-height: 0;
+    padding: 10px 12px;
+    font-size: 16px;
+  }
+  .lista .col-pos { grid-area: pos; font-size: 16px; }
+  .lista .col-nome { grid-area: nome; }
+  .lista .col-total { grid-area: total; font-size: 17px; align-self: end; }
+  .moeda { font-size: 13px; border-width: 2px; }
+
+  .lista .col-num:not(.col-total),
+  .lista .col-uf { display: none; }
+  .lista .col-trilhas {
+    display: block;
+    grid-area: metr;
+    font-family: var(--body);
+    font-size: 12px;
+    color: #444;
+    align-self: end;
+  }
+}
+
+[hidden] { display: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  .slide.entrando, .lista .linha { animation: none; }
+}
